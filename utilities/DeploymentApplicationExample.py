@@ -235,9 +235,9 @@ def main() :
     local_schema = transaction.StateSchema(local_ints, local_bytes)
 
     # compile program to TEAL assembly
-    with open("./approval.teal", "w") as f:
-        approval_program_teal = approval_program()
-        f.write(approval_program_teal)
+    #with open("./approval.teal", "w") as f:
+    #    approval_program_teal = approval_program()
+    #    f.write(approval_program_teal)
     
     with open("./smart_contract.teal", "w") as f: #Write smart contract teal to file
         smart_contract_teal = smart_contract_program()
