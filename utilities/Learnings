@@ -14,3 +14,7 @@
 8. Incompatibility between algosdk.v2client and algosdk. It is better to use algosdk.v2client all the time. 
 9. The periodic payment smart contract example can be found on this link :
 	https://github.com/algorand/pyteal/blob/master/examples/signature/periodic_payment.py
+10. While deploying the smaet contract, apparently you need to 
+11. In order to deploy contract or appl from a node, the node should be created after setting EnableDeveloperAPI as true in config.json inside data folder. 
+	The data folder will have a file named confid.json.example which needs to be renamed as config.json. The node should be setup after that. If the node is already setup, restart it. 
+12. Currently facing a Bad request error. More details about the same in the PR. 
