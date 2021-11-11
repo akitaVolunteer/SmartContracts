@@ -153,7 +153,7 @@ def smart_contract_program(tmpl_fee=tmpl_fee,tmpl_period=tmpl_period,tmpl_dur=tm
 	periodic_pay_core = And(Txn.type_enum() == TxnType.Payment,Txn.fee() < tmpl_fee,Txn.first_valid() % tmpl_period == Int(0),Txn.last_valid() == tmpl_dur + Txn.first_valid(),Txn.lease() == tmpl_lease)
 	periodic_pay_close = And(Txn.close_remainder_to() == tmpl_rcv,Txn.rekey_to() == tmpl_rcv,Txn.receiver() == tmpl_rcv,Txn.first_valid() == tmpl_timeout,Txn.amount() == tmpl_amt,)
 	periodic_pay_escrow = periodic_pay_core.And(periodic_pay_close)
-    return compileTeal(periodic_pay_escrow, Mode.Application, version=3)#
+   	return compileTeal(periodic_pay_escrow, Mode.Application, version=3)#
 
 def clear_state_program():
     program = Return(Int(1))
