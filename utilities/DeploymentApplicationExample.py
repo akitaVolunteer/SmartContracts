@@ -249,7 +249,7 @@ def main() :
         f.write(clear_state_program_teal)
 
     # compile program to binary
-    approval_program_compiled = compile_program(algod_client, approval_program_teal)
+    #approval_program_compiled = compile_program(algod_client, approval_program_teal)
     smart_contract_compiled = compile_program(algod_client, smart_contract_teal)# Added - Compile smart program
 
     # compile program to binary
@@ -259,7 +259,7 @@ def main() :
     print("Deploying Counter application......")
 
     # create new application
-    app_id = create_app(algod_client, creator_private_key, approval_program_compiled, clear_state_program_compiled, global_schema, local_schema) #Replace approval_program_compiled with Smart contract compiled. 
+    app_id = create_app(algod_client, creator_private_key, smart_contract_compiled, clear_state_program_compiled, global_schema, local_schema) #Replace approval_program_compiled with Smart contract compiled. 
 
     # read global state of application
     print("Global state:", read_global_state(algod_client, account.address_from_private_key(creator_private_key), app_id))
