@@ -30,6 +30,21 @@ def inner_asset_creation(txn_index: TealType.uint64) -> TxnExpr:
         InnerTxn.created_asset_id()
     ])
 
+@Subroutine(TealType.none)
+def inner_asset_transfer(asset_id: TealType.uint64, asset_amount: TealType.uint64, asset_sender: TealType.bytes, asset_receiver: TealType.bytes) -> Expr:
+    return Seq([
+        InnerTxnBuilder.Begin(),
+        InnerTxnBuilder.SetFields({
+            TxnField.note: Bytes("TUT_ITXN_AT"),
+            TxnField.type_enum: TxnType.AssetTransfer,
+            TxnField.xfer_asset: asset_id,
+            TxnField.asset_sender: asset_sender,
+            TxnField.asset_amount: asset_amount,
+            TxnField.asset_receiver: asset_receiver
+            }),
+        InnerTxnBuilder.Submit()
+    ])
+
 
 @Subroutine(TealType.none)
 def inner_payment_txn(amount: TealType.uint64, receiver: TealType.bytes) -> Expr:
